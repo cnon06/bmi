@@ -56,24 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
 
 
-
-            /*
-             Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: Expanded(
-               child: Container(
-                 decoration: BoxDecoration(
-                 color: Colors.green,
-                 borderRadius: BorderRadius.circular(10),
-               ),
-                 height: 150,),
-             ),
-           )
-             */
-
-
-
-
           ],
         ),
       ),
