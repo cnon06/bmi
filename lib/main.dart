@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,41 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
 
-            Text("Hi World"),
+
+            Row(
+              children: [
+                new ReusableCard(),
+                new ReusableCard(),
+              ],
+            ),
+
+            new ReusableCard(),
+
+            Row(
+              children: [
+                new ReusableCardOrange(),
+                new ReusableCard(),
+              ],
+            ),
+
+
+
+            /*
+             Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Expanded(
+               child: Container(
+                 decoration: BoxDecoration(
+                 color: Colors.green,
+                 borderRadius: BorderRadius.circular(10),
+               ),
+                 height: 150,),
+             ),
+           )
+             */
+
+
+
 
           ],
         ),
@@ -47,3 +81,36 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+class ReusableCard extends StatelessWidget {
+
+
+  Color color = Colors.blue;
+  String text = "Inherited Class";
+
+  @override
+  Widget build(BuildContext context) {
+    return   Expanded(
+      flex: 1,
+      child: Container(
+       width: MediaQuery. of(context). size. width,
+        height: 200,
+        margin: EdgeInsets.all(10.0),
+        //padding: const EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Center(child: Text("$text", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),)),
+
+      ),
+    );
+  }
+}
+
+class ReusableCardOrange extends ReusableCard {
+  Color color = Colors.yellow;
+  String text = "Class which inherits";
+
+}
+
