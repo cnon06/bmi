@@ -7,39 +7,23 @@ import 'package:hexcolor/hexcolor.dart';
 //final pasiveColor = Colors.red;
 
 
-class IconContent extends StatefulWidget {
+class IconContent extends StatelessWidget {
   IconData icon;
- // bool gender;
   Color color;
- // Color  maleColor = Colors.green;
- // Color femaleColor = Colors.green;
-
-
 
   IconContent({required this.icon, required this.color});
 
   @override
-  State<IconContent> createState() => _IconContentState();
-}
-
-class _IconContentState extends State<IconContent> {
-
-  @override
   Widget build(BuildContext context) {
-  // maleColor = Colors.green;
- // femaleColor = Colors.green;
-
     return Card(
-      color: widget.color,
-      // color:  widget.gender? maleColor : femaleColor,
-      child: Icon(  widget.icon, //FontAwesomeIcons.mars,
+      color: color,
+
+      child: Icon(  icon,
         color:  Colors.black54,
         size: 80,
       ),
     );
   }
 }
-
-
 
 

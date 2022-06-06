@@ -21,7 +21,7 @@ class ReusableCard extends StatelessWidget {
 
     return   Container(
 
-      width: MediaQuery. of(context). size. width,
+     // width: MediaQuery. of(context). size. width,
       height: height,
       margin: EdgeInsets.all(10.0),
       //padding: const EdgeInsets.all(8.0),

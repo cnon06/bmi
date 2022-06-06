@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:untitled37/constants.dart';
 import 'package:untitled37/reusablecard.dart';
+import 'package:untitled37/weightage.dart';
 
 import 'iconcontent.dart';
 import 'myhomepage.dart';
@@ -11,6 +13,7 @@ final pasiveColor = HexColor("eace67");
 Color maleColor = activeColor;
 Color femaleColor = pasiveColor;
 
+double sliderValue = 160;
 
 class MyHomePage extends StatefulWidget {
 
@@ -19,6 +22,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
 
 
   @override
@@ -31,8 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("BMI CALCULATOR",style: TextStyle(fontWeight: FontWeight.normal,
-                color: Colors.black38, fontFamily: "RubikMoonrocks",
-            fontSize: 30
+                color: new Constants().textColor, fontFamily: "RammettoOne",
+            fontSize: 25
             ),
             )
           ],
@@ -50,7 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         child:  Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
 
                Row(
@@ -63,11 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             onTap: ()
                             {
                               setState((){});
-                             // print('male');
                               maleColor = activeColor;
                               femaleColor = pasiveColor;
                             },
-                            child: IconContent(icon: FontAwesomeIcons.mars, color: maleColor)
+                            child: IconContent(icon: FontAwesomeIcons.mars,
+                                color: maleColor,
+                            )
                         ),
                       ),
                     ),
@@ -80,7 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
                            onTap: ()
                            {
                              setState((){});
-                            // print('female');
                              maleColor = pasiveColor;
                              femaleColor = activeColor;
                            },
@@ -95,7 +100,55 @@ class _MyHomePageState extends State<MyHomePage> {
               ReusableCard(
                 height: 280,
                 color: HexColor("AAeace67"),
-                myChild: Text("2"),
+                myChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("HEIGHT",
+                      style: TextStyle(fontSize: 25, fontFamily: "RammettoOne",
+                          fontWeight: FontWeight.bold,
+                          color: new Constants().textColor),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+
+                      Text("${sliderValue.toInt()}",
+                        style: TextStyle(fontSize: 80,
+                            fontWeight: FontWeight.bold, fontFamily: "RammettoOne",
+                            color: new Constants().textColor),
+                      ),
+                        Text("cm",
+                          style: TextStyle(fontSize: 30, fontFamily: "RammettoOne",
+                              fontWeight: FontWeight.bold,
+                              color: new Constants().textColor),
+                        ),
+                      ]
+                    ),
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        thumbColor:  Colors.redAccent,
+                        activeTrackColor: Colors.redAccent,
+                        thumbShape:
+                        RoundSliderThumbShape(enabledThumbRadius:15),
+                        overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 30),
+                      ),
+                      child: Slider(
+                        value: sliderValue,
+                        min: 30,
+                        max: 220,
+                        onChanged: (double newValue)
+                        {
+                          setState((){});
+                          sliderValue = newValue;
+                         // print('$newValue');
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
               Row(
@@ -104,7 +157,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: ReusableCard(
                       height: 170,
                       color: HexColor("AAeace67"),
-                      myChild: Text("2"),
+                      myChild:WeightAge(
+                        cmKg: "kg",
+                        weightAge: "WEIGHT",
+                      ),
+
+
                     ),
                   ),
 
@@ -112,7 +170,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     child:  ReusableCard(
                       height: 170,
                       color: HexColor("AAeace67"),
-                      myChild:  Text("2"),
+                      myChild:  WeightAge(
+                        cmKg: "",
+                        weightAge: "AGE",
+                      ),
                     ),
                   ),
 
@@ -125,7 +186,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.orange,
                   myChild:
                   Center(child:  Text("Calculate",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black45),
+                    style: TextStyle(fontSize: 20, fontFamily: "RammettoOne",
+                        fontWeight: FontWeight.bold,
+                        color: new Constants().textColor),
                   ),
                   ),
 
@@ -139,9 +202,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
     );
-
-
-
 
 
   }
